@@ -39,9 +39,9 @@ http {
     sendfile on;
  
     upstream app_servers {
-        server web1:80;
-        server web2:80;
-        server web3:80;
+        server web1;
+        server web2;
+        server web3;
     }
  
     server {
@@ -144,29 +144,23 @@ services:
   web1:
     build:
       context:  ./web1
-      dockerfile: Dockerfile
-    expose:
-      - "5000"
+      dockerfile: Dockerfile  
     volumes:
-      - web_volumes:/web_volumes
+      - web_volumes:/usr/local/apache2/htdocs
 
   web2:
     build:
       context:  ./web2
-      dockerfile: Dockerfile
-    expose:
-      - "5000"
+      dockerfile: Dockerfile  
     volumes:
-      - web_volumes:/web_volumes
+      - web_volumes:/usr/local/apache2/htdocs
 
   web3:
     build:
       context:  ./web3
       dockerfile: Dockerfile
-    expose:
-      - "5000"
     volumes:
-      - web_volumes:/web_volumes
+      - web_volumes:/usr/local/apache2/htdocs
  
   proxy:
     build:
@@ -174,12 +168,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:80"
-    links:
-      - web1
-      - web2
-      - web3
     volumes:
-      - nginx_volumes:/nginx_volumes
+      - nginx_volumes:/etc/nginx/nginx_volumes
 
 volumes:
     web_volumes:
