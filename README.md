@@ -14,7 +14,7 @@ Para poder realizar el sistema planteado en la arquitectura, esto es, un balance
 
 
 
-####Balanceador de cargas: Nginx
+#### Balanceador de cargas: Nginx
 
 Para poder atender a las peticiones, Nginx recibirá dichas peticiones por el puerto 8080 por ende se debe habilitar con el siguiente comando.
 ``` sh
@@ -133,7 +133,7 @@ ADD index.html /usr/local/apache2/htdocs/index.html
 </html>
 ```
 
-###docker-compose.yml
+### docker-compose.yml
 
 El docker-compose.yml contiene lo siguiente.
 
